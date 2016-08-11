@@ -1,0 +1,49 @@
+acs,GEO.id,GEO.id2,GEO.display-label,HC01_EST_VC02,HC01_MOE_VC02,HC02_EST_VC02,HC02_MOE_VC02
+one-year,0500000US24001,24001,"Allegany County, Maryland",7148,811,19.2,6.3
+one-year,0500000US24003,24003,"Anne Arundel County, Maryland",62621,3121,6.3,1.8
+one-year,0500000US24005,24005,"Baltimore County, Maryland",97708,3700,10.4,1.9
+one-year,0500000US24009,24009,"Calvert County, Maryland",10552,1294,5.4,3.3
+one-year,0500000US24011,24011,"Caroline County, Maryland",,,,
+one-year,0500000US24013,24013,"Carroll County, Maryland",21737,1394,5.3,2.1
+one-year,0500000US24015,24015,"Cecil County, Maryland",10806,1168,9.4,4
+one-year,0500000US24017,24017,"Charles County, Maryland",22027,1579,7.7,2.9
+one-year,0500000US24019,24019,"Dorchester County, Maryland",,,,
+one-year,0500000US24021,24021,"Frederick County, Maryland",30524,1699,6.1,2.3
+one-year,0500000US24023,24023,"Garrett County, Maryland",,,,
+one-year,0500000US24025,24025,"Harford County, Maryland",29637,2010,10.2,2.8
+one-year,0500000US24027,24027,"Howard County, Maryland",41361,2341,6.1,2
+one-year,0500000US24029,24029,"Kent County, Maryland",,,,
+one-year,0500000US24031,24031,"Montgomery County, Maryland",129628,4169,7,1.3
+one-year,0500000US24033,24033,"Prince George's County, Maryland",100730,3600,11.2,1.7
+one-year,0500000US24035,24035,"Queen Anne's County, Maryland",,,,
+one-year,0500000US24037,24037,"St. Mary's County, Maryland",13170,1449,8.4,4.5
+one-year,0500000US24039,24039,"Somerset County, Maryland",,,,
+one-year,0500000US24041,24041,"Talbot County, Maryland",,,,
+one-year,0500000US24043,24043,"Washington County, Maryland",17702,1548,16.8,4.5
+one-year,0500000US24045,24045,"Wicomico County, Maryland",11716,1283,17.8,6.4
+one-year,0500000US24047,24047,"Worcester County, Maryland",,,,
+one-year,0500000US24510,24510,"Baltimore city, Maryland",62633,3419,27.2,2.9
+five-year,0500000US24001,24001,"Allegany County, Maryland",7211,354,19,3.3
+five-year,0500000US24003,24003,"Anne Arundel County, Maryland",67364,1334,5.8,0.9
+five-year,0500000US24005,24005,"Baltimore County, Maryland",96739,1439,9.9,0.7
+five-year,0500000US24009,24009,"Calvert County, Maryland",11793,468,6,1.4
+five-year,0500000US24011,24011,"Caroline County, Maryland",4190,282,18.7,4
+five-year,0500000US24013,24013,"Carroll County, Maryland",21166,505,5.7,1
+five-year,0500000US24015,24015,"Cecil County, Maryland",12357,539,11.6,1.9
+five-year,0500000US24017,24017,"Charles County, Maryland",20494,627,8.4,1.3
+five-year,0500000US24019,24019,"Dorchester County, Maryland",3834,273,23.4,4
+five-year,0500000US24021,24021,"Frederick County, Maryland",31040,811,6.2,1
+five-year,0500000US24023,24023,"Garrett County, Maryland",3306,206,19.7,4.8
+five-year,0500000US24025,24025,"Harford County, Maryland",31520,844,9.5,1.3
+five-year,0500000US24027,24027,"Howard County, Maryland",42290,975,5.3,0.8
+five-year,0500000US24029,24029,"Kent County, Maryland",1624,213,12.3,4.7
+five-year,0500000US24031,24031,"Montgomery County, Maryland",129447,1720,6.8,0.4
+five-year,0500000US24033,24033,"Prince George's County, Maryland",107174,1238,10.3,0.7
+five-year,0500000US24035,24035,"Queen Anne's County, Maryland",5590,348,8.9,2.7
+five-year,0500000US24037,24037,"St. Mary's County, Maryland",14293,461,7.5,1.7
+five-year,0500000US24039,24039,"Somerset County, Maryland",2080,283,31.5,6.9
+five-year,0500000US24041,24041,"Talbot County, Maryland",4097,242,13.1,3.5
+five-year,0500000US24043,24043,"Washington County, Maryland",17988,541,15.8,1.8
+five-year,0500000US24045,24045,"Wicomico County, Maryland",12053,545,19.2,3.1
+five-year,0500000US24047,24047,"Worcester County, Maryland",4729,365,12.1,3.4
+five-year,0500000US24510,24510,"Baltimore city, Maryland",64647,1121,28.7,1.2

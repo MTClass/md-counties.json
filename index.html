@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+#controls {
+    top: 240px;
+    left: 60px;
+    position: absolute;
+    font-family: sans-serif;
+}
+</style>
+<body>
+<form id="controls">
+    <strong>Poverty Rate of Families with Children Under 18</strong><br>
+    <input type="radio" name="survey" value="five-year" checked> ACS 5-Year<br>
+    <input type="radio" name="survey" value="one-year"> ACS 1-Year
+</form>
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+<script>
+var speed = 900
+var width = 960
+var height = 500
+
+var color = d3.scaleLinear()
+    .range(['#ffd', '#c35'])
+
+var projection = d3.geoMercator()
+    .center([-77.223, 38.85])
+    .scale(width * 12)
+
+var path = d3.geoPath().projection(projection)
+
+var svg = d3.select('body')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height)
+
+var defs = svg.append('defs')
+
+defs.append('pattern')
+    .attr('id', 'stripe-pattern')
+    .attr('width', 20)
+    .attr('height', 20)
+    .attr('patternUnits', 'userSpaceOnUse')
+    .attr('patternTransform', 'rotate(45)')
+    .append('rect')
+    .attr('width', 12)
+    .attr('height', 20)
+    .attr('fill', '#fff')
+
+defs.append('mask')
+    .attr('id', 'stripe-mask')
+    .append('rect')
+    .attr('width', '100%')
+    .attr('height', '100%')
+    .attr('fill', 'url(#stripe-pattern)')
+
+var layers = svg.selectAll('.layer')
+    .data(['fill', 'stripe'])
+    .enter().append('g')
+    .attr('class', function (d) { return 'layer ' + d })
+
+var stripeLayer = layers.filter(function (d) { return d === 'stripe' })
+    .attr('mask', 'url(#stripe-mask)')
+
+d3.queue()
+    .defer(d3.csv, 'data.csv', function (d) {
+        return {
+            acs: d.acs,
+            id: d['GEO.id2'],
+            name: d['GEO.display-label'],
+            rate: d.HC02_EST_VC02 !== '' ? +d.HC02_EST_VC02 / 100 : undefined,
+            moe: d.HC02_MOE_VC02 !== '' ? +d.HC02_MOE_VC02 / 100 : undefined
+        }
+    })
+    .defer(d3.json, 'md-counties.json')
+    .awaitAll(initialize)
+
+function initialize(error, results) {
+    if (error) { throw error }
+
+    var data = results[0]
+    var geoData = results[1]
+
+    color.domain([
+        d3.min(data, function (d) { return d.rate - d.moe }),
+        d3.max(data, function (d) { return d.rate + d.moe })
+    ])
+
+    var counties = layers.selectAll('path')
+        .data(topojson.feature(geoData, geoData.objects.md).features)
+        .enter().append('path')
+        .attr('d', path)
+        .style('stroke', '#fff')
+        .style('stroke-width', 1)
+
+    update('five-year')
+
+    d3.select('#controls').on('change', function () {
+        update(d3.select('input:checked').attr('value'))
+    })
+
+    function update(acs) {
+        counties.interrupt()
+            .data(data.filter(function (d) { return d.acs === acs }),
+                function (d) { return d.id })
+            .style('fill', function (d) { return d.rate ? color(d.rate) : '#eee' })
+
+        var tIn = d3.transition().duration(speed).ease(d3.easeSinIn)
+        var tOut = d3.transition().duration(speed).ease(d3.easeSinOut)
+
+        stripeLayer.selectAll('path')
+            .filter(function (d) { return d.rate })
+            .transition(tIn).delay(function (d, i) { return Math.random() * speed })
+            .on('start', function repeat() {
+                d3.active(this)
+                    .style('fill', function (d) { return color(d.rate + d.moe) })
+                    .transition(tOut)
+                    .style('fill', function (d) { return color(d.rate) })
+                    .transition(tIn).delay(speed / 2)
+                    .style('fill', function (d) { return color(d.rate - d.moe) })
+                    .transition(tOut)
+                    .style('fill', function (d) { return color(d.rate) })
+                    .transition(tIn).delay(speed / 2)
+                    .on('start', repeat)
+            })
+    }
+}
+
+</script>
+</body>
